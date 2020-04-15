@@ -8,17 +8,7 @@ public class ControlaRanking : MonoBehaviour
     public Text listaCampeoes;
     void Start()
     {
-        // PlayerPrefs.SetString("NomeJogador1","João");
-        // PlayerPrefs.SetInt("PontosJogador1",300);
-
-        // PlayerPrefs.SetString("NomeJogador2","Maria");
-        // PlayerPrefs.SetInt("PontosJogador2",150);
-
-        // PlayerPrefs.SetString("NomeJogador3","Renata");
-        // PlayerPrefs.SetInt("PontosJogador3",50);
-
         MontaListaCampeoes();
-
     }
 
     // Update is called once per frame
@@ -61,6 +51,10 @@ public class ControlaRanking : MonoBehaviour
         listaCampeoes.text += " - " + PlayerPrefs.GetInt("PontosJogador3");
 
         listaCampeoes.text += suaPontuacao;
+
+        PlayerPrefs.SetString("NomeJogador","");
+        PlayerPrefs.SetInt("PontosAtual",0);
+
     }
 
     public void LimparRanking(){
