@@ -36,7 +36,8 @@ public class ControlaRanking : MonoBehaviour
         }else if(PlayerPrefs.GetInt("PontosAtual") > PlayerPrefs.GetInt("PontosJogador3")){
 
             PlayerPrefs.SetInt("PontosJogador3" , PlayerPrefs.GetInt("PontosAtual"));
-            PlayerPrefs.SetInt("PontosJogador3" , PlayerPrefs.GetInt("PontosAtual"));
+            PlayerPrefs.SetString("NomeJogador3" , PlayerPrefs.GetString("NomeJogador"));
+
         }else{
             suaPontuacao = "\nSua Pontuação: " + PlayerPrefs.GetInt("PontosAtual");
         }
