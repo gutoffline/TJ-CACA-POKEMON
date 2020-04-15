@@ -6,20 +6,17 @@ public class Pokemon : MonoBehaviour
 {
     public Sprite[] modelos;
     private SpriteRenderer sr;
+    private Criador criador;
 
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
         sr.sprite = modelos[Random.Range(0, modelos.GetLength(0))];
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        criador = FindObjectOfType<Criador>();
     }
 
     void OnMouseDown() {
+        criador.AumentarPontos();
         Destroy(gameObject);
     }
 }

@@ -69,4 +69,10 @@ public class Botoes : MonoBehaviour
     public void AbrirJogo(){
         SceneManager.LoadScene("CenaJogo");
     }
+
+    public void AbrirRanking(){
+        SceneManager.LoadScene("CenaRanking");
+    }
+
+
 }
