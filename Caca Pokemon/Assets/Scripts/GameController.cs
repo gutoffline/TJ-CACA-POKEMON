@@ -14,12 +14,10 @@ public class GameController : MonoBehaviour
     }
 
     public void Salvar(){
-        PlayerPrefs.SetString("NomeJogador" , nome.text);
-        pontuacao.text = "PONTUAÇÃO\n" + PlayerPrefs.GetString("NomeJogador") + " : " + PlayerPrefs.GetInt("PontosAtual");
+        PlayerPrefs.SetString("NomeJogador0" , nome.text);
+        pontuacao.text = "PONTUAÇÃO\n" + PlayerPrefs.GetString("NomeJogador0") + " : " + PlayerPrefs.GetInt("PontosJogador0");
         nome.text = "";
-        
         SceneManager.LoadScene("CenaRanking");
-
     }
 
     // Update is called once per frame

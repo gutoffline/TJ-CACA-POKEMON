@@ -8,7 +8,7 @@ public class Criador : MonoBehaviour
     public GameObject pokemon;
 
     public Text contador;
-    private float tempoRestante = 60f;
+    private float tempoRestante = 10f;
     private int limite = 10;
     public Pokemon[] pokemons;
     private int quantidade = 5;
@@ -38,7 +38,7 @@ public class Criador : MonoBehaviour
         contador.text = "TEMPO RESTANTE \n" + Mathf.Round(tempoRestante) + " SEGUNDOS";
 
         if(tempoRestante < -5){
-            PlayerPrefs.SetInt("PontosAtual",pontosJogador);
+            PlayerPrefs.SetInt("PontosJogador0",pontosJogador);
             SceneManager.LoadScene("CenaFim");
         }else if(tempoRestante < 0){
             contador.text = "TEMPO\nESGOTADO";
