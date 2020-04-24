@@ -38,6 +38,5 @@
         echo "3º Lugar - " . $dados['nome3'] . $dados['pontos3'] . " pontos";
         echo "<br>";
     }
-
     mysqli_close($conexao);
 ?>
