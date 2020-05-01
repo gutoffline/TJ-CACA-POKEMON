@@ -13,7 +13,6 @@
 
     <button type="submit">Cadastrar</button>
 </form>
-
 <?php
     /* INÍCIO CONEXÃO */
     $servidor = "localhost";
@@ -40,3 +39,4 @@
     }
     mysqli_close($conexao);
 ?>
+

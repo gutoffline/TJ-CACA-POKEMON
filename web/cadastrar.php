@@ -1,9 +1,9 @@
 <?php
 /* INÍCIO CONEXÃO */
 $servidor = "localhost";
-$banco = "id13314127_pokemon";
-$usuario = "id13314127_superpokemon";
-$senha = "1nn4>9@&!z_(yhKx";
+$banco = "pokemon";
+$usuario = "root";
+$senha = "";
 
 $conexao = mysqli_connect($servidor , $usuario , $senha , $banco);
 if(!$conexao){
@@ -26,5 +26,3 @@ if(mysqli_query($conexao , $inserir)){
     echo "Erro: " . mysqli_error($conexao);
 }
 ?>
-<br>
-<a href="index.php">Voltar</a>

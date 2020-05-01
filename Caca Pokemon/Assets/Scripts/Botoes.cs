@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+
+
 public class Botoes : MonoBehaviour
 {
     public DontDestroyThis objetoMusica;

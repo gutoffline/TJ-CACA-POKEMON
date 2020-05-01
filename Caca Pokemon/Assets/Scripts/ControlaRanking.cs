@@ -1,18 +1,59 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Networking;
 
 public class ControlaRanking : MonoBehaviour
 {
     public Text listaCampeoes;
     private string suaPontuacao;
+    private string url = "https://bdpokemon.000webhostapp.com";
     void Start()
     {
+        StartCoroutine(WebCarregar());
         OrganizaRanking();
         listaCampeoes.text = MontaRanking();
         LimparDadosJogadorAtual();
     }
+
+    IEnumerator WebCarregar(){
+        UnityWebRequest www = UnityWebRequest.Get(url + "/consultar.php");
+        yield return www.SendWebRequest();
+        if(www.isHttpError){
+            Debug.Log("Deu ruim: " + www.error);
+        }else{
+            string placar = www.downloadHandler.text;
+            string[] lugares = placar.Split(';');
+            string[] lugar1 = lugares[0].Split('-');
+            string[] lugar2 = lugares[1].Split('-');
+            string[] lugar3 = lugares[2].Split('-');
+            PlayerPrefs.SetString("NomeJogador1", lugar1[0]);
+            PlayerPrefs.SetInt("PontosJogador1", Int32.Parse(lugar1[1]));
+
+            PlayerPrefs.SetString("NomeJogador2", lugar2[0]);
+            PlayerPrefs.SetInt("PontosJogador2", Int32.Parse(lugar2[1]));
+
+            PlayerPrefs.SetString("NomeJogador3", lugar3[0]);
+            PlayerPrefs.SetInt("PontosJogador3", Int32.Parse(lugar3[1]));
+        }
+    }
+
+
+    IEnumerator WebDeletar(){
+        UnityWebRequest www = UnityWebRequest.Get(url + "/limpar.php");
+        yield return www.SendWebRequest();
+        if(www.isHttpError){
+            Debug.Log("Deu ruim: " + www.error);
+        }else{
+            Debug.Log("Deu Bom: "+ www.downloadHandler.text);
+        }
+    }
+
+    
+
+    
 
     
     void OrganizaRanking(){
