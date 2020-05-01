@@ -9,13 +9,13 @@ public class ControlaRanking : MonoBehaviour
 {
     public Text listaCampeoes;
     private string suaPontuacao;
-    private string url = "https://bdpokemon.000webhostapp.com";
+    private string url = "http://localhost/pokemon";
     void Start()
     {
         StartCoroutine(WebCarregar());
-        OrganizaRanking();
-        listaCampeoes.text = MontaRanking();
-        LimparDadosJogadorAtual();
+        OrganizaRanking(); //MONTALISTACAMPEÕES
+        listaCampeoes.text = MontaRanking(); //NÃO TEM
+        LimparDadosJogadorAtual(); // NAO TEM
     }
 
     IEnumerator WebCarregar(){
@@ -51,10 +51,34 @@ public class ControlaRanking : MonoBehaviour
         }
     }
 
-    
+    IEnumerator WebInserir(){
+        WWWForm form = new WWWForm();
+        form.AddField("nome1","ZECA");
+        form.AddField("pontos1",103);
+        form.AddField("nome2","CAMARGO");
+        form.AddField("pontos2",102);
+        form.AddField("nome3","MAGAL");
+        form.AddField("pontos3",101);
 
-    
+        using(UnityWebRequest www = UnityWebRequest.Post(url + "/cadastrar.php", form)){
+            yield return www.SendWebRequest();
+            if(www.isNetworkError || www.isHttpError){
+                Debug.Log("Deu ruim: " + www.error);
+            }else{
+                Debug.Log("Deu bom.");
+            }
+        }
+    }
+    public void BotaoWebCarregar(){
+        StartCoroutine(WebCarregar());
+    }
 
+    public void BotaoWebInserir(){
+        StartCoroutine(WebInserir());
+    }
+    public void BotaoWebDeletar(){
+        StartCoroutine(WebDeletar());
+    }
     
     void OrganizaRanking(){
         if(PlayerPrefs.GetInt("PontosJogador0") > PlayerPrefs.GetInt("PontosJogador1")){
